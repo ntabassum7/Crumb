@@ -1,5 +1,7 @@
 const yargs = require('yargs');
 
+const Stats = require('./lib/crumb/stats');
+
 // Register run command
 yargs.command('collect <jobs_yml>', 'Run collection jobs', (yargs) => {
 
@@ -35,6 +37,19 @@ yargs.command('stats <id>', 'Collect statistics from running jobs', (yargs) => {
 }, async (argv) => {
     let id = argv.id;
     console.log( id );
+
+    let stats = new Stats();
+
+    let data = [
+        {node: 'whiterose', jobs: 30, done: 10},
+        {node: 'mr.robot', jobs: 30, done: 6},
+        {node: 'darlene', jobs: 30, done: 15},
+        {node: 'gideon', jobs: 30, done: 0}
+    ];
+
+    console.log( stats.renderTable(data) );
+
+
 });
 
 // Turn on help and access argv
