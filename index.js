@@ -2,6 +2,20 @@ const yargs = require('yargs');
 
 const Stats = require('./lib/crumb/stats');
 
+
+// Register run command
+yargs.command('start <baker_yml>', 'Setup cluster', (yargs) => {
+
+    yargs.positional('baker_yml', {
+        describe: 'Baker description file',
+        type: 'string'
+    });
+
+}, async (argv) => {
+    let baker_yml = argv.baker_yml;
+    console.log( baker_yml );
+});
+
 // Register run command
 yargs.command('collect <jobs_yml>', 'Run collection jobs', (yargs) => {
 
