@@ -1,0 +1,6 @@
+job:
+  - git show $id
+bucket: 
+  id: asdfasdf
+  key: xxx
+  secret: xxx

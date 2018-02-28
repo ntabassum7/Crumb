@@ -1,7 +1,7 @@
 const yargs = require('yargs');
 
 const Stats = require('./lib/crumb/stats');
-
+const Collector = require('./lib/crumb/collect/collector');
 
 // Register run command
 yargs.command('start <baker_yml>', 'Setup cluster', (yargs) => {
@@ -17,16 +17,26 @@ yargs.command('start <baker_yml>', 'Setup cluster', (yargs) => {
 });
 
 // Register run command
-yargs.command('collect <jobs_yml>', 'Run collection jobs', (yargs) => {
+yargs.command('collect <jobs_yml> <input_csv>', 'Run collection jobs on input.csv', (yargs) => {
 
     yargs.positional('jobs_yml', {
         describe: 'Job description file',
         type: 'string'
     });
 
+    yargs.positional('input_csv', {
+        describe: 'Every row corresponds to one job',
+        type: 'string'
+    });
+
+
 }, async (argv) => {
     let jobs_yml = argv.jobs_yml;
-    console.log( jobs_yml );
+    let input_csv = argv.input_csv;
+
+    let collector = new Collector();
+    collector.run(jobs_yml, input_csv);
+
 });
 
 yargs.command('export <id>', 'Export data from completed jobs', (yargs) => {
