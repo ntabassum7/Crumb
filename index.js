@@ -35,7 +35,7 @@ yargs.command('collect <jobs_yml> <input_csv>', 'Run collection jobs on input.cs
     let input_csv = argv.input_csv;
 
     let collector = new Collector();
-    collector.run(jobs_yml, input_csv);
+    await collector.load(jobs_yml, input_csv);
 
 });
 
