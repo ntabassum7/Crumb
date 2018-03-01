@@ -1,5 +1,5 @@
 job:
-  - git show $id
+  - git --no-pager show $id
 bucket: 
   id: asdfasdf
   key: xxx
