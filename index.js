@@ -1,5 +1,6 @@
 const yargs = require('yargs');
 
+const Crumb = require('./lib/crumb/crumb');
 const Stats = require('./lib/crumb/stats');
 const DiskSaver = require('./lib/crumb/save/disk');
 const Collector = require('./lib/crumb/collect/collector');
@@ -35,9 +36,8 @@ yargs.command('collect <jobs_yml> <input_csv>', 'Run collection jobs on input.cs
     let jobs_yml = argv.jobs_yml;
     let input_csv = argv.input_csv;
 
-    let saver = new DiskSaver('output');
-    let collector = new Collector(saver);
-    await collector.load(jobs_yml, input_csv);
+    let crumb = new Crumb(jobs_yml);
+    await crumb.collector.load(crumb.jobs, input_csv);
 
 
 });

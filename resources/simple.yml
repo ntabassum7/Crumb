@@ -1,6 +1,4 @@
 job:
   - git --no-pager show $id
-bucket: 
-  id: asdfasdf
-  key: xxx
-  secret: xxx
+disk:
+  path: output/
