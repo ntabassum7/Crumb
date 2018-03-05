@@ -31,14 +31,32 @@ yargs.command('collect <jobs_yml> <input_csv>', 'Run collection jobs on input.cs
         type: 'string'
     });
 
+    yargs.options(
+        { 
+            verbose: {
+                alias: 'v',
+                describe: `Provide extra output from baking process`,
+                demand: false,
+                type: 'boolean'
+            }
+        }
+    );
 
 }, async (argv) => {
     let jobs_yml = argv.jobs_yml;
     let input_csv = argv.input_csv;
-
-    let crumb = new Crumb(jobs_yml);
-    await crumb.collector.load(crumb.jobs, input_csv);
-
+    let verbose = argv.verbose;
+    
+    try
+    {
+        let crumb = new Crumb(jobs_yml);
+        let collector = await crumb.initCollector();
+        await collector.load(crumb.jobs, input_csv, verbose);
+    }
+    catch(err)
+    {
+        console.log(chalk.red(err));
+    }
 
 });
 

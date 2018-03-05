@@ -1,4 +1,7 @@
 job:
   - git --no-pager show $id
+remote:
+  name: crumb
+  cwd: /Crumb
 disk:
   path: output/
