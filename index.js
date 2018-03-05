@@ -4,6 +4,7 @@ const Crumb = require('./lib/crumb/crumb');
 const Stats = require('./lib/crumb/stats');
 const DiskSaver = require('./lib/crumb/save/disk');
 const Collector = require('./lib/crumb/collect/collector');
+const chalk = require('chalk');
 
 // Register run command
 yargs.command('start <baker_yml>', 'Setup cluster', (yargs) => {
