@@ -1,9 +1,9 @@
 job:
-  - "[ -d `basename $repo` ] || git clone $repo"
-  - cd `basename $repo` && git --no-pager show $id
+  - "[ -d `basename $repo` ] || sudo git clone $repo"
+  - cd `basename $repo` && sudo git --no-pager show $id
 cluster:
-  name: crumb_cluster
+  name: crumbcluster
   nodes: 3
-  cwd: /home/ubuntu
+  cwd: /root
 disk:
-  path: /home/ubuntu/output
+  path: /root/output
