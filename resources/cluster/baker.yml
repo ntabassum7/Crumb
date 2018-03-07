@@ -1,8 +1,17 @@
 name: crumbcluster
+vars:
+  - githubuser: chris.parnin@gmail.com
+  - githubpass:
+      prompt: Enter repo password or token please.
 provider: digitalocean
 cluster: 
   plain:
     nodes[3]: 
-      ip: 192.168.45.2
       lang:
         - nodejs9
+      resources: 
+        - git: https://github.com/ottomatica/Crumb:crumb
+        - git: 
+            repo: https://github.com/alt-code/Leaky
+            dest: leaky
+            private: true

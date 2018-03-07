@@ -1,7 +1,8 @@
 job:
-  - git --no-pager show $id
+  - "[ -d `basename $repo` ] || sudo git clone $repo"
+  - cd `basename $repo` && sudo git --no-pager show $id
 remote:
-  name: crumb
-  cwd: /Crumb
+  name: crumb-leaky
+  cwd: /home/ubuntu
 disk:
   path: output/

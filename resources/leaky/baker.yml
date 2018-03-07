@@ -1,0 +1,14 @@
+name: crumb-leaky
+vars:
+ - githubuser: chris.parnin@gmail.com
+ - githubpass:
+     prompt: Enter repo password or token please.
+vm:
+  ip: 192.168.44.88
+lang:
+  - nodejs9
+resources:
+  - git:
+      repo: https://github.com/alt-code/Leaky
+      dest: leaky
+      private: true
