@@ -1,7 +1,7 @@
 job:
   - "[ -d `basename $repo` ] || git clone $repo"
-  - cd `basename $repo` && git --no-pager show $id > /home/ubuntu/output/$id.crumb
-  - node leaky/src/mining/repos/TokenizeFiles.js output/$id.crumb
+  - "[ -f /home/ubuntu/output/$id.crumb ] ||( cd `basename $repo` && git --no-pager show $id > /home/ubuntu/output/$id.crumb )"
+  - "[ -f $id.crumb.csv ] || node leaky/src/mining/repos/TokenizeFiles.js output/$id.crumb"
 remote:
   name: crumb-leaky
   cwd: /home/ubuntu
