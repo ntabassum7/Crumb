@@ -1,4 +1,5 @@
 job:
-  - git --no-pager show $id
+  git -C ../Leaky/src/mining/repos/$repo_name/ show --pretty="" --name-only HEAD $build_commit_sha
+  
 disk:
   path: output/
